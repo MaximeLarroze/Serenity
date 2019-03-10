@@ -3,6 +3,8 @@ using RestSharp;
 using Serenity.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +13,7 @@ namespace Serenity
 {
     public class RestService
     {
+        public static Cookie cookie;
         public RestService()
         {
 
@@ -57,7 +60,8 @@ namespace Serenity
             dico.Add("lgt", lgt);
             request.AddParameter("application/json", JsonConvert.SerializeObject(dico), ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
-            
+            var responseCookie = response.Cookies.First();
+            cookie = new Cookie(responseCookie.Name, responseCookie.Value, responseCookie.Path, responseCookie.Domain);
 
             //HttpClient client = new HttpClient();
             //var dico = new Dictionary<string, double>();
@@ -72,6 +76,9 @@ namespace Serenity
         public async Task SessionFollow(double lat, double lgt)
         {
             var client = new RestClient("http://192.168.0.163:8000/api/session/follow");
+            client.CookieContainer = new CookieContainer();
+            client.CookieContainer.Add(cookie);
+
             var request = new RestRequest(Method.POST);
             request.AddHeader("content-type", "application/json");
             var dico = new Dictionary<string, double>();
