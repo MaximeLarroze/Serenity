@@ -12,5 +12,6 @@ namespace Serenity
         public static int Starting { get; set; }
         public static bool AccessTimer { get; set; }
         public static bool Verifiicat { get; set; }
+        public static string Guuid { get; set; }
     }
 }

@@ -82,11 +82,8 @@ namespace Serenity
 
             if (Device.RuntimePlatform == "Android")
             {
-                
-                
-
-                DependencyService.Get<IScan>().Scanner(); 
-
+                DependencyService.Get<IScan>().Scanner();
+                await Navigation.PushAsync(new NewOffer());
             }
         }
     }

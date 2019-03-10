@@ -22,7 +22,16 @@ namespace Serenity
         private async void ContentPage_Appearing(object sender, EventArgs e)
         {
             RestService service = new RestService();
-            LSTNewOffer.ItemsSource = await service.CheckAsync(new Guid("396c20e7-71c2-4d1d-9ac7-4cc49fa8bb2a"));
+            if (!string.IsNullOrWhiteSpace(StaticContext.Guuid))
+            {
+                LSTNewOffer.ItemsSource = await service.CheckAsync(Guid.Parse(StaticContext.Guuid));
+            }
+            else
+            {
+                await DisplayAlert("Offre invalide", "L'offre que vous venez de scanner est invalable", "ok");
+            }
+
+            
         }
     }
 }

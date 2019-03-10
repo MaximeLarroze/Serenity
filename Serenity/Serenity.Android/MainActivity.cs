@@ -39,6 +39,8 @@ namespace Serenity.Droid
                 if(uuid != null)
                 {
                     //TODO put into the app
+                    StaticContext.Guuid = uuid;
+
                 }
             }
 

@@ -27,6 +27,7 @@ namespace Serenity.Droid
 
             Intent intent = new Intent(Intent.ActionView, Android.Net.Uri.Parse("sty://pick/"));
             activity.StartActivityForResult(intent, 1);
+            
             // activity.StartActivityForResult()
         }
     }
