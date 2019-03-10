@@ -11,7 +11,6 @@ using Plugin.Geolocator;
 using Newtonsoft.Json;
 using Serenity.Model;
 using System.Net.Http;
-using Android.Content;
 
 namespace Serenity
 {
