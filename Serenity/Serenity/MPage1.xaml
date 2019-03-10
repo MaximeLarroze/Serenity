@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Serenity.MPage1"
+                  xmlns:local="clr-namespace:Serenity"
+                  NavigationPage.TitleView="true"
+             NavigationPage.BackButtonTitle="true"
+                  Title=" Serenity">
+    <MasterDetailPage.Master>
+        <ContentPage Title="Serenity" BackgroundColor="Silver">
+
+            <ScrollView>
+                <StackLayout>
+                    <Label/>
+                <Image Style="{StaticResource Logo_MPage}" Source="Logo2.png" />
+                <Label  />
+                <Button Text="Partir maintenant" Clicked="Bt_Clicked_Partir2" />
+                <Label />
+                <Button Text="Mon Timer" Clicked="Bt_Clicked_MonTimer"/>
+                <Label />
+                <Button Text="Mes Offres" Clicked="Bt_Clicked_Offres"/>
+                <Label />
+                <Button Text="Premiers Secours" Clicked="Bt_Clicked_PS"/>
+                <Label />
+                <Button Text="Urgence Accident" Clicked="Bt_CLicked_Urgence"/>
+                <Label />
+                    <Button Text="Réinitialiser les compteurs" Clicked="Bt_CLicked_Reset"/>
+                    <Label />
+                    <Button Text="Informations" Clicked="Bt_Clicked_Informations"/>
+                    <Label />
+                    <Label />
+                </StackLayout>
+            </ScrollView>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <local:MainPage></local:MainPage>
+    </MasterDetailPage.Detail>
+    </MasterDetailPage>

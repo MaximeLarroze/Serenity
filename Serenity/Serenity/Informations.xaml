@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Serenity.Informations"
+             NavigationPage.TitleView="true"
+             NavigationPage.BackButtonTitle="true"
+             NavigationPage.HasNavigationBar="True"
+             Title="Informations APS">
+    
+    <ContentPage.Content>
+        <ScrollView>
+        <Grid Margin="10,10,10,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0,1*" />
+                <RowDefinition Height="0,1*" />
+                <RowDefinition Height="0,1*" />
+                <RowDefinition Height="0,1*" />
+                <RowDefinition Height="0,1*" />
+                <RowDefinition Height="0,1*" />
+                <RowDefinition Height="0,1*" />
+                <RowDefinition Height="0,1*" />
+                <RowDefinition Height="0,1*" />
+                <RowDefinition Height="0,1*" />
+                    <RowDefinition Height="0,1*" />
+                    <RowDefinition Height="0,1*" />
+                    <RowDefinition Height="0,1*" />
+                    <RowDefinition Height="0,1*" />
+                    <RowDefinition Height="0,1*" />
+                    <RowDefinition Height="0,1*" />
+                    <RowDefinition Height="0,1*" />
+                    <RowDefinition Height="0,1*" />
+                    <RowDefinition Height="0,1*" />
+                    <RowDefinition Height="0,1*" />
+                </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0,3*" />
+                <ColumnDefinition Width="0,7*" />
+            </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Grid.Row="0"/>
+                <Label Text="Développeurs" FontAttributes="Bold" Grid.Column="0" Grid.Row="1"/>
+                <Label Text="Maxime" Grid.Column="1" Grid.Row="2"/>
+                <Label Text="Quentin DOS" Grid.Column="1" Grid.Row="3"/>
+                <Label Text="Valentin GIUST" Grid.Column="1" Grid.Row="4"/>
+                <Label Text="Maxime LARROZE-F." Grid.Column="1" Grid.Row="5"/>
+                <Label Text="Monsieur Y" Grid.Column="1" Grid.Row="6"/>
+                <Label Grid.Column="0" Grid.Row="7"/>
+                <Label Text="Version" FontAttributes="Bold" Grid.Column="0" Grid.Row="8"/>
+                <Label Text="[1.072.96]" Grid.Column="1" Grid.Row="8"/>
+                <Label Grid.Column="0" Grid.Row="9"/>
+                <Label Text="Support Application" FontAttributes="Bold" Grid.Column="0" Grid.Row="10"/>
+                <Label Text="support@serenity.fr" Grid.Column="1" Grid.Row="10"/>
+                <Label />
+                <Label />
+                <Label Text="Copyright Serenity (c) 2019" HorizontalOptions="Center" />
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

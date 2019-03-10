@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Serenity.Offres"
+             NavigationPage.TitleView="true"
+             NavigationPage.BackButtonTitle="true"
+             NavigationPage.HasNavigationBar="True"
+             Title="Offres Serenity"
+             Appearing="ContentPage_Appearing">
+    <ContentPage.Content>
+        <StackLayout>
+            <!--<StackPanel>-->
+
+
+            <!--<Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="0," />
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>-->
+            <!--<Label />
+            <StackPanel>
+        <Listview x:Name=""></Listview>
+            </StackPanel>
+            <Label />-->
+            <ScrollView>
+                <ListView x:Name="LSTOffre">
+                    <!--<ListView.ItemsSource>
+                        --><!--<x:Array Type="{x:Type local:Offer}">
+                            <local:Offer Offre="5%" TOffre="Café" Utilisation="Valide" />
+                            <local:Offer Offre="8%" TOffre="Croissants" Utilisation="Utilisée" />
+                            <local:Offer Offre="10%" TOffre="Café + Croissant" Utilisation="Utilisée" />
+                            <local:Offer Offre="12%" TOffre="Thé" Utilisation="Valide" />
+                            <local:Offer Offre="25%" TOffre="Croissants" Utilisation="Valide" />
+                            <local:Offer Offre="15%" TOffre="Café" Utilisation="Utilisée" />
+                        </x:Array>--><!--
+                        <x:String x:Name
+                    </ListView.ItemsSource>-->
+                     <ListView.ItemTemplate>
+                        <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.3*" />
+                                    <ColumnDefinition Width="0.4*" />
+                                    <ColumnDefinition Width="0.3*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Nom}" FontAttributes="Bold" />
+                                    <Label Grid.Column="1" Text="{Binding Commerce}" />
+                                <Label Grid.Column="2" Text="{Binding Desc}" HorizontalTextAlignment="End" />
+                            </Grid>
+                        </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+            <!--</Grid>-->
+            <!--</StackPanel>-->
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Serenity.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--<ControlTemplate x:Key="Template1"></ControlTemplate>-->
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#FF183152" />
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+            <Style TargetType="Image">
+                <Setter Property="WidthRequest" Value="100"/>
+                <Setter Property="HeightRequest" Value="100"/>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="#FF183152"/>
+            </Style>
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarTextColor" Value="White"/>
+                <Setter Property="BarBackgroundColor" Value="#FF183152"/>
+                <Setter Property="Title" Value="Serenity" />
+            </Style>
+
+            <Style TargetType="Image" x:Key="Logo_MPage">
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="WidthRequest" Value="50"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

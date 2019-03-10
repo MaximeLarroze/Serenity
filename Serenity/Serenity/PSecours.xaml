@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Serenity.PSecours"
+             NavigationPage.TitleView="true"
+             NavigationPage.BackButtonTitle="true"
+             NavigationPage.HasNavigationBar="True"
+             Title="Serenity Secours">
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="10,10,10,10">
+                <Label />
+                <Image Source="Urgence.png" />
+                <Label />
+                <Label Text="Quel type d'accident est-ce ?" />
+                <Label Text="Pieton / 2 roues / 4 roues / Véhicule Lourd (camion)"/>
+                <Label />
+                <Label Text="Combien y a t-il de victime ?" />
+                <Label />
+                <Label Text="Y a t-il des enfants touchés ?" />
+                <Label />
+                <Label Text="Y a t-il des blaissés graves ?"/>
+                <Label />
+                <Label />
+                <Button Text="Appeler le SAMU (15)" Clicked="Bt_Call_15"/>
+                <Button Text="Appeler la POLICE (17)" Clicked="Bt_Call_17"/>
+                <Button Text="Appeler les POMPIER (18)" Clicked="Bt_Call_18"/>
+                <Button Text="Appeler les Secours EUROPEENS (112)" Clicked="Bt_Call_112"/>
+                <Label />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
