@@ -22,6 +22,7 @@ namespace Serenity
         {
             //this.Navigation.PushModalAsync(new MPage1());
             InitializeComponent();
+            
             ChargementMAP.IsRunning = true;
             ChargementMAP.IsVisible = true;
             var WebViewMAP = new WebView
@@ -52,9 +53,9 @@ namespace Serenity
         private async void ContentPage_Appearing(object sender, EventArgs e)
         {
             // Implémentation de l'API start
-            var loc = await CrossGeolocator.Current.GetLastKnownLocationAsync();
-            RestService service = new RestService();
-            await service.SessionFollow(loc.Latitude, loc.Longitude);
+            //var loc = await CrossGeolocator.Current.GetLastKnownLocationAsync();
+            //RestService service = new RestService();
+            //await service.SessionFollow(loc.Latitude, loc.Longitude);
         }
         public class MapTest
         {
@@ -70,15 +71,23 @@ namespace Serenity
             }
         private async void Bt_Clicked_SCAN(object sender, EventArgs e)
         {
+            StaticContext.Verifiicat = true;
             //SCAN
             //Intent intent = new Intent(Intent.ActionMain);
             //intent.AddCategory(Intent.CategoryHome);
             //StartActivity(intent);
             //Android.Content.Context.ActivityService.Contains
-            
+
             //Activity a = Android
 
-            
+            if (Device.RuntimePlatform == "Android")
+            {
+                
+                
+
+                DependencyService.Get<IScan>().Scanner(); 
+
+            }
         }
     }
 }

@@ -10,7 +10,11 @@ using Android.Content;
 
 namespace Serenity.Droid
 {
-    [Activity(Label = "Serenity", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Serenity", Icon = "@mipmap/icon", Theme = "@style/MainTheme", 
+        MainLauncher = true, 
+        LaunchMode = LaunchMode.SingleInstance,
+        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)
+        ]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -21,6 +25,8 @@ namespace Serenity.Droid
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
+            
+
         }
 
         protected override void OnNewIntent(Intent intent)
@@ -34,6 +40,18 @@ namespace Serenity.Droid
                 {
                     //TODO put into the app
                 }
+            }
+
+        }
+
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+
+            if(data != null && resultCode == Result.Ok)
+            {
+                String uuid = data.GetStringExtra("uuid");
+                uuid.Trim();
             }
 
         }

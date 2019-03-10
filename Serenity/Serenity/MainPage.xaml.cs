@@ -47,41 +47,39 @@ namespace Serenity
             if (StaticContext.Timer1s != null)
                 StaticContext.Timer1s.Stop();
 
-            StaticContext.Timer1s.Start();
+            //StaticContext.Timer1s.Start();
 
             StaticContext.TempsRestant = TimeSpan.FromHours(2);
             //FIN TIMER
             StaticContext.AccessTimer = true;
             await this.Navigation.PushModalAsync(new Map());
-            await this.Navigation.PushModalAsync(new MPage1());
+            await this.Navigation.PushAsync(new MPage1());
         }
 
         public bool Timer()
         {
-            try
+            if (StaticContext.Verifiicat == true)
             {
-                // Use default vibration length
-                Vibration.Vibrate();
+                try
+                {
+                    // Use default vibration length
+                    Vibration.Vibrate();
 
-                // Or use specified time
-                var duration = TimeSpan.FromSeconds(1);
-                var duration2 = TimeSpan.FromSeconds(1);
-                var duration3 = TimeSpan.FromSeconds(1);
-                Vibration.Vibrate(duration);
-                Vibration.Cancel();
-                Vibration.Vibrate(duration2);
-                Vibration.Cancel();
-                Vibration.Vibrate(duration3);
+                    // Or use specified time
+                    var duration = TimeSpan.FromSeconds(1);
+                    Vibration.Vibrate(duration);
+                }
+                catch (FeatureNotSupportedException ex)
+                {
+                    // Feature not supported on device
+                }
+                catch (Exception ex)
+                {
+                    // Other error has occurred.
+                }
+                Device.BeginInvokeOnMainThread(() => DisplayAlert("Temps de conduite dépassé", "Votre temps de conduite règlementaire est bientôt terminé\nPensez à prendre une pause sur la prochaine aire de repos\nVotre temps de repos doit être d'au moins 20 MINUTES", "ok"));
             }
-            catch (FeatureNotSupportedException ex)
-            {
-                // Feature not supported on device
-            }
-            catch (Exception ex)
-            {
-                // Other error has occurred.
-            }
-            Device.BeginInvokeOnMainThread(() => DisplayAlert("Temps de conduite dépassé", "Votre temps de conduite règlementaire est bientôt terminé\nPensez à prendre une pause sur la prochaine aire de repos\nVotre temps de repos doit être d'au moins 20 MINUTES", "ok"));
+           
             return false;
         }
 
@@ -95,7 +93,7 @@ namespace Serenity
                 //RESET
                 // await service.Reset():
                 //START
-                await service.SessionStart(loc.Latitude, loc.Longitude);
+                //await service.SessionStart(loc.Latitude, loc.Longitude);
                 StaticContext.Starting = 1;
             }
         }

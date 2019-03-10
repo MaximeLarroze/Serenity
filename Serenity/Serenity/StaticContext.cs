@@ -11,5 +11,6 @@ namespace Serenity
         public static TimeSpan TempsRestant { get; set; }
         public static int Starting { get; set; }
         public static bool AccessTimer { get; set; }
+        public static bool Verifiicat { get; set; }
     }
 }

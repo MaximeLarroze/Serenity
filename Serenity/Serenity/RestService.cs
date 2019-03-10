@@ -60,8 +60,8 @@ namespace Serenity
             dico.Add("lgt", lgt);
             request.AddParameter("application/json", JsonConvert.SerializeObject(dico), ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
-            var responseCookie = response.Cookies.First();
-            cookie = new Cookie(responseCookie.Name, responseCookie.Value, responseCookie.Path, responseCookie.Domain);
+            //var responseCookie = response.Cookies.First();
+            //cookie = new Cookie(responseCookie.Name, responseCookie.Value, responseCookie.Path, responseCookie.Domain);
 
             //HttpClient client = new HttpClient();
             //var dico = new Dictionary<string, double>();
