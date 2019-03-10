@@ -23,7 +23,7 @@ namespace Serenity
             //TIMER
             Timer timer = new Timer(new List<TimeSpan>()
             {
-                TimeSpan.FromMinutes(0.1),
+                TimeSpan.FromMinutes(105),
                 TimeSpan.FromMinutes(120),
                 TimeSpan.FromMinutes(135)
             }, Timer);

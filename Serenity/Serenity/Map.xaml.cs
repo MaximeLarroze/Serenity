@@ -82,7 +82,7 @@ namespace Serenity
             if (Device.RuntimePlatform == "Android")
             {
                 DependencyService.Get<IScan>().Scanner();
-                await Navigation.PushAsync(new NewOffer());
+                await Navigation.PushModalAsync(new NewOffer());
             }
         }
     }

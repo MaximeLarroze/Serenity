@@ -14,7 +14,7 @@ namespace Serenity
     public class RestService
     {
         public static Cookie cookie;
-        public static string url = "http://192.168.1.130:8000";
+        public static string url = "http://192.168.43.96:8000";
         public RestService()
         {
 
@@ -23,7 +23,7 @@ namespace Serenity
         public async Task<List<Aire>> GetAiresAsync()
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync("http://192.168.1.130:8000/api/aires");
+            HttpResponseMessage response = await client.GetAsync(url + "/api/aires");
             return JsonConvert.DeserializeObject<List<Aire>>(await response.Content.ReadAsStringAsync());
         }
 
@@ -54,7 +54,7 @@ namespace Serenity
                 //var stringContent = new StringContent(JsonConvert.SerializeObject(dico));
                 ////stringContent.Headers.Add("Content-Type", "application/json");
                 //stringContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
-                //HttpResponseMessage response = await client.PostAsync("http://192.168.1.130:8000/api/check", stringContent);
+                //HttpResponseMessage response = await client.PostAsync("http://192.168.43.96:8000/api/check", stringContent);
                 //string str = await response.Content.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<List<Offre>>(response.Content);
             }
@@ -87,7 +87,7 @@ namespace Serenity
             //var stringContent = new StringContent(JsonConvert.SerializeObject(dico));
             //stringContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
             ////stringContent.Headers.Add("Content-Type", "application/json");
-            //await client.PostAsync("http://192.168.0.163:8000/api/session/start", stringContent);
+            //await client.PostAsync("http://192.168.43.96:8000/api/session/start", stringContent);
         }
 
         public async Task SessionFollow(double lat, double lgt)
@@ -111,7 +111,7 @@ namespace Serenity
             //var stringContent = new StringContent(JsonConvert.SerializeObject(dico));
             //stringContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
             ////stringContent.Headers.Add("Content-Type", "application/json");
-            //await client.PostAsync("http://192.168.0.163:8000/api/session/follow", stringContent);
+            //await client.PostAsync("http://192.168.43.96:8000/api/session/follow", stringContent);
         }
 
         public async Task Reset()
@@ -125,7 +125,7 @@ namespace Serenity
             //var stringContent = new StringContent("");
             //stringContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
             ////stringContent.Headers.Add("Content-Type", "application/json");
-            //await client.PostAsync("http://192.168.0.163:8000/api/session/reset", stringContent);
+            //await client.PostAsync("http://192.168.43.96:8000/api/session/reset", stringContent);
         }
     }
 }
