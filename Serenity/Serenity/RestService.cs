@@ -14,6 +14,7 @@ namespace Serenity
     public class RestService
     {
         public static Cookie cookie;
+        public static string url = "http://192.168.1.130:8000";
         public RestService()
         {
 
@@ -34,7 +35,7 @@ namespace Serenity
             }
             try
             {
-                var client = new RestClient("http://192.168.1.130:8000/api/check");
+                var client = new RestClient(url + "/api/check");
                 client.CookieContainer = new CookieContainer();
                 client.CookieContainer.Add(cookie);
 
@@ -65,7 +66,7 @@ namespace Serenity
 
         public async Task SessionStart(double lat, double lgt)
         {
-            var client = new RestClient("http://192.168.1.130:8000/api/session/start");
+            var client = new RestClient(url + "/api/session/start");
             var request = new RestRequest(Method.POST);
             request.AddHeader("content-type", "application/json");
             var dico = new Dictionary<string, double>();
@@ -91,7 +92,7 @@ namespace Serenity
 
         public async Task SessionFollow(double lat, double lgt)
         {
-            var client = new RestClient("http://192.168.1.130:8000/api/session/follow");
+            var client = new RestClient(url + "/api/session/follow");
             client.CookieContainer = new CookieContainer();
             client.CookieContainer.Add(cookie);
 
@@ -115,7 +116,7 @@ namespace Serenity
 
         public async Task Reset()
         {
-            var client = new RestClient("http://192.168.1.130:8000/api/session/reset");
+            var client = new RestClient(url + "/api/session/reset");
             var request = new RestRequest(Method.POST);
             request.AddHeader("content-type", "application/json");
             IRestResponse response = client.Execute(request);
