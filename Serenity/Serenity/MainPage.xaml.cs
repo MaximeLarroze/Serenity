@@ -46,10 +46,10 @@ namespace Serenity
 
             if (StaticContext.Timer1s != null)
                 StaticContext.Timer1s.Stop();
-
-            //StaticContext.Timer1s.Start();
-
             StaticContext.TempsRestant = TimeSpan.FromHours(2);
+            StaticContext.Timer1s.Start();
+
+
             //FIN TIMER
             StaticContext.AccessTimer = true;
             await this.Navigation.PushModalAsync(new Map());
@@ -93,7 +93,7 @@ namespace Serenity
                 //RESET
                 // await service.Reset():
                 //START
-                //await service.SessionStart(loc.Latitude, loc.Longitude);
+                await service.SessionStart(loc.Latitude, loc.Longitude);
                 StaticContext.Starting = 1;
             }
         }

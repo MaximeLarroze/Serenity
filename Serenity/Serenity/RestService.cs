@@ -22,7 +22,7 @@ namespace Serenity
         public async Task<List<Aire>> GetAiresAsync()
         {
             HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync("http://192.168.0.163:8000/api/aires");
+            HttpResponseMessage response = await client.GetAsync("http://192.168.1.130:8000/api/aires");
             return JsonConvert.DeserializeObject<List<Aire>>(await response.Content.ReadAsStringAsync());
         }
 
@@ -34,17 +34,30 @@ namespace Serenity
             }
             try
             {
-                HttpClient client = new HttpClient();
-                var dico = new Dictionary<string, string>();
-                dico.Add("uuid", guid.ToString());
-                var stringContent = new StringContent(JsonConvert.SerializeObject(dico));
-                //stringContent.Headers.Add("Content-Type", "application/json");
-                stringContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
-                HttpResponseMessage response = await client.PostAsync("http://192.168.0.163:8000/api/check", stringContent);
-                string str = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<List<Offre>>(str);
+                var client = new RestClient("http://192.168.1.130:8000/api/check");
+                client.CookieContainer = new CookieContainer();
+                client.CookieContainer.Add(cookie);
+
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("content-type", "application/json");
+                var dico = new Dictionary<string, object>();
+                dico.Add("uuid", guid);
+                dico.Add("constraintEnabled", false);
+                request.AddParameter("application/json", JsonConvert.SerializeObject(dico), ParameterType.RequestBody);
+                IRestResponse response = client.Execute(request);
+
+
+                //HttpClient client = new HttpClient();
+                //var dico = new Dictionary<string, string>();
+                //dico.Add("uuid", guid.ToString());
+                //var stringContent = new StringContent(JsonConvert.SerializeObject(dico));
+                ////stringContent.Headers.Add("Content-Type", "application/json");
+                //stringContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+                //HttpResponseMessage response = await client.PostAsync("http://192.168.1.130:8000/api/check", stringContent);
+                //string str = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<Offre>>(response.Content);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -52,16 +65,19 @@ namespace Serenity
 
         public async Task SessionStart(double lat, double lgt)
         {
-            var client = new RestClient("http://192.168.0.163:8000/api/session/start");
+            var client = new RestClient("http://192.168.1.130:8000/api/session/start");
             var request = new RestRequest(Method.POST);
             request.AddHeader("content-type", "application/json");
             var dico = new Dictionary<string, double>();
             dico.Add("lat", lat);
             dico.Add("lgt", lgt);
             request.AddParameter("application/json", JsonConvert.SerializeObject(dico), ParameterType.RequestBody);
-            IRestResponse response = client.Execute(request);
-            //var responseCookie = response.Cookies.First();
-            //cookie = new Cookie(responseCookie.Name, responseCookie.Value, responseCookie.Path, responseCookie.Domain);
+            client.ExecuteAsync(request, (response) =>
+            {
+                var responseCookie = response.Cookies.First();
+                cookie = new Cookie(responseCookie.Name, responseCookie.Value, responseCookie.Path, responseCookie.Domain);
+            });
+
 
             //HttpClient client = new HttpClient();
             //var dico = new Dictionary<string, double>();
@@ -75,7 +91,7 @@ namespace Serenity
 
         public async Task SessionFollow(double lat, double lgt)
         {
-            var client = new RestClient("http://192.168.0.163:8000/api/session/follow");
+            var client = new RestClient("http://192.168.1.130:8000/api/session/follow");
             client.CookieContainer = new CookieContainer();
             client.CookieContainer.Add(cookie);
 
@@ -85,7 +101,7 @@ namespace Serenity
             dico.Add("lat", lat);
             dico.Add("lgt", lgt);
             request.AddParameter("application/json", JsonConvert.SerializeObject(dico), ParameterType.RequestBody);
-            IRestResponse response = client.Execute(request);
+            client.ExecuteAsync(request, (response) => { });
 
             //HttpClient client = new HttpClient();
             //var dico = new Dictionary<string, double>();
@@ -99,7 +115,7 @@ namespace Serenity
 
         public async Task Reset()
         {
-            var client = new RestClient("http://192.168.0.163:8000/api/session/reset");
+            var client = new RestClient("http://192.168.1.130:8000/api/session/reset");
             var request = new RestRequest(Method.POST);
             request.AddHeader("content-type", "application/json");
             IRestResponse response = client.Execute(request);
